@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Text Summarizer | Home{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h2>Upload Text File</h2>
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <label for="text_file">Select a <code>.txt</code> file</label>
+        <input id="text_file" name="text_file" type="file" accept=".txt,text/plain" required>
+        <button type="submit">Summarize</button>
+    </form>
+</section>
+
+<section class="results-grid">
+    <article class="card">
+        <h2>Original Content</h2>
+        {% if original_text %}
+            <pre>{{ original_text }}</pre>
+        {% else %}
+            <p class="placeholder">Your uploaded text will appear here.</p>
+        {% endif %}
+    </article>
+
+    <article class="card">
+        <h2>Summarized Output</h2>
+        {% if summary %}
+            <pre>{{ summary }}</pre>
+        {% else %}
+            <p class="placeholder">Your AI-generated summary will appear here.</p>
+        {% endif %}
+    </article>
+</section>
+{% endblock %}
